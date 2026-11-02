@@ -1,0 +1,78 @@
+/* src/App.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #F68B1F;
+  --secondary-color: #6D6E71;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f7f9fc; /* Light neutral background */
+  color: #1a202c; /* Dark text for contrast */
+}
+
+.brand-gradient {
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+.brand-gradient-light {
+  background: linear-gradient(to right, rgba(246, 139, 31, 0.1), rgba(109, 110, 113, 0.1));
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Project card styles */
+.project-card {
+  @apply bg-white rounded-xl shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1;
+}
+
+.project-card-active {
+  @apply border-l-4 border-[#F68B1F];
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-[#F68B1F] hover:bg-[#E57D18] text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply bg-white border border-[#F68B1F]/20 text-[#F68B1F] hover:bg-[#F68B1F]/10 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+/* Custom styles for project card actions */
+.project-card-actions {
+  @apply flex items-center space-x-2;
+}
+
+.project-card-actions button {
+  @apply p-1.5 rounded transition-colors;
+}
+
+/* Status badges */
+.status-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.status-badge-active {
+  @apply bg-green-100 text-green-800;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

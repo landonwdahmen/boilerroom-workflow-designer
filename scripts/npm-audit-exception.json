@@ -1,0 +1,356 @@
+{
+  "schema": 1,
+  "ownerApproval": "M7C.1B conditional acceptance; M7C.2 exact CI implementation",
+  "reviewDate": "2026-11-01",
+  "advisory": "GHSA-g3hv-75wg-m249",
+  "cve": "CVE-2026-118764",
+  "node": "22.14.0",
+  "fixedRange": ">=11.0.1",
+  "scope": "Temporary disclosed development-only source-available academic portfolio risk; not remediation or blanket waiver.",
+  "reconsider": "Fail closed on changed advisory, source/config/workflow/install, production exposure, untrusted callers or compatible supported upstream fix.",
+  "reviewedAudit": {
+    "auditReportVersion": 2,
+    "vulnerabilities": {
+      "@eslint-community/eslint-utils": {
+        "name": "@eslint-community/eslint-utils",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "eslint"
+        ],
+        "effects": [
+          "eslint"
+        ],
+        "range": "*",
+        "nodes": [
+          "node_modules/@eslint-community/eslint-utils"
+        ],
+        "fixAvailable": {
+          "name": "eslint",
+          "version": "4.0.0",
+          "isSemVerMajor": true
+        }
+      },
+      "@eslint/config-array": {
+        "name": "@eslint/config-array",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "minimatch"
+        ],
+        "effects": [
+          "eslint"
+        ],
+        "range": "*",
+        "nodes": [
+          "node_modules/@eslint/config-array"
+        ],
+        "fixAvailable": {
+          "name": "eslint",
+          "version": "4.0.0",
+          "isSemVerMajor": true
+        }
+      },
+      "@eslint/js": {
+        "name": "@eslint/js",
+        "severity": "moderate",
+        "isDirect": true,
+        "via": [
+          "eslint"
+        ],
+        "effects": [],
+        "range": ">=10.0.1",
+        "nodes": [
+          "node_modules/@eslint/js"
+        ],
+        "fixAvailable": {
+          "name": "@eslint/js",
+          "version": "9.39.5",
+          "isSemVerMajor": true
+        }
+      },
+      "eslint": {
+        "name": "eslint",
+        "severity": "moderate",
+        "isDirect": true,
+        "via": [
+          "@eslint-community/eslint-utils",
+          "@eslint/config-array",
+          "minimatch"
+        ],
+        "effects": [
+          "@eslint-community/eslint-utils",
+          "@eslint/js"
+        ],
+        "range": "0.7.1 - 2.0.0-rc.1 || >=4.1.0",
+        "nodes": [
+          "node_modules/eslint"
+        ],
+        "fixAvailable": {
+          "name": "eslint",
+          "version": "4.0.0",
+          "isSemVerMajor": true
+        }
+      },
+      "minimatch": {
+        "name": "minimatch",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1244012,
+            "name": "minimatch",
+            "dependency": "minimatch",
+            "title": "minimatch has potential denial of service via globparts amplification",
+            "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-405"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<11.0.1"
+          }
+        ],
+        "effects": [
+          "@eslint/config-array",
+          "eslint"
+        ],
+        "range": "<11.0.1",
+        "nodes": [
+          "node_modules/@eslint/config-array/node_modules/minimatch",
+          "node_modules/eslint/node_modules/minimatch"
+        ],
+        "fixAvailable": {
+          "name": "eslint",
+          "version": "4.0.0",
+          "isSemVerMajor": true
+        }
+      }
+    },
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 5,
+        "high": 0,
+        "critical": 0,
+        "total": 5
+      },
+      "dependencies": {
+        "prod": 93,
+        "dev": 312,
+        "optional": 27,
+        "peer": 0,
+        "peerOptional": 0,
+        "total": 404
+      }
+    }
+  },
+  "installedPackages": {
+    "node_modules/eslint": "10.13.0",
+    "node_modules/@eslint/js": "10.0.1",
+    "node_modules/@eslint/config-array": "0.23.5",
+    "node_modules/@eslint-community/eslint-utils": "4.10.1",
+    "node_modules/eslint/node_modules/minimatch": "10.2.6",
+    "node_modules/@eslint/config-array/node_modules/minimatch": "10.2.6"
+  },
+  "minimatchPaths": [
+    "node_modules/@eslint/config-array/node_modules/minimatch",
+    "node_modules/eslint/node_modules/minimatch"
+  ],
+  "installedFiles": {
+    "node_modules/eslint/lib/eslint/eslint-helpers.js": "4a1d745b6b7e1972ba59d2402ce488e90309825c8f3bb4d973a59d8dee511ebd",
+    "node_modules/@eslint/config-array/dist/cjs/index.cjs": "615889758115b8254f0c5ae4761ab659a98c4b4cc16da0f06215b9107ba49675",
+    "node_modules/eslint/node_modules/minimatch/dist/commonjs/index.js": "d224f71f20d7c206fcc5b7e9f747324c7698345a0b2c28d717dd9cf698306783",
+    "node_modules/@eslint/config-array/node_modules/minimatch/dist/commonjs/index.js": "d224f71f20d7c206fcc5b7e9f747324c7698345a0b2c28d717dd9cf698306783"
+  },
+  "parents": [
+    {
+      "name": "eslint",
+      "compatibleRange": "^10.13.0"
+    },
+    {
+      "name": "@eslint/config-array",
+      "compatibleRange": "^0.23.5"
+    }
+  ],
+  "advisoryEvidenceSHA256": "323b517461c7b00ff9b385ab9dd0347cd9b63b1ae65754d88e9c374e13f79ad4",
+  "workflows": [
+    ".github/workflows/backend.yml",
+    ".github/workflows/dependencies.yml",
+    ".github/workflows/frontend.yml"
+  ],
+  "reviewedFiles": {
+    ".gitattributes": "eaab202ebe53c265addd878abfa5c9dc07bc852da2107174b0be47f00854bde3",
+    ".github/workflows/backend.yml": "d74a7a0a80b1e71189de4ad3a58af888c593203d4e25c838a026ffe1244741dd",
+    ".github/workflows/dependencies.yml": "252e1d4b96934226796b16cdc86874bfeda15e91fb0cd86b98e4c9edc7f86187",
+    ".github/workflows/frontend.yml": "2396d04e57269034c79f60d98838e7a2184c68563c781d50f0618dc005af51e4",
+    ".gitignore": "36fe208881ffb0346818f23f842d0edb59042128936a00f5bcbf7bdfc16041d0",
+    "Backend/Controllers/AuthController.cs": "76169b46e3a87e4e229d45cd3352a00812df0ed6dc4c6a646cb70f8323c808bd",
+    "Backend/Controllers/ProjectGraphsController.cs": "e15b160eb991858f5c3689d90a42fd76075a1396cacb4788c8f29518b05b8909",
+    "Backend/Controllers/ProjectsController.cs": "d663cca4844ad39f0719f0b40d1f3e498464ab9330a254138a7026e4a5a07fec",
+    "Backend/Controllers/RequestHandlerController.cs": "54f4a45e60000076087928703349934e8e46e68e90588c885698c1dd3ed62306",
+    "Backend/Controllers/RequestPayload.cs": "b09566e360ed08c3074cf366e6b6af2a7d7e2d82d1c783662f3f797c7f547301",
+    "Backend/Controllers/SecuredController.cs": "b530483276644cff7e8e5b5bfc17800f579a35ef1504196fd44bf6d991bc1ccd",
+    "Backend/Models/AuthModels.cs": "862a06007627e13c4d8763dc4cd848da7c618eafc1e6e5d6dd03b0bf6dbdd7b9",
+    "Backend/Program.cs": "60304210220103caab605d40be17d51816412438fb91663115a71a8c858f94da",
+    "Backend/Services/AuthService.cs": "16e5479e06084e5d79e4c02469e46c6631ea6312b9009eb55c3d67da92ef7d29",
+    "Backend/Services/AuthenticationTickets.cs": "671a5784ec7bfa6d19d4423fa8451f3fe2d87902f1fdd338906149a962655d3e",
+    "Backend/Services/DatabaseBackupService.cs": "ca9df0fceeb9f9ab12a951537886510c2a104c61676a3eb2b9caf0724567a1a6",
+    "Backend/Services/DatabaseBackupWorker.cs": "eb4943dae8211a9ac0c0aabb3db6d7a2084abe2fcbcd5fb47556216d3bcf7502",
+    "Backend/Services/DatabaseCookieEvents.cs": "89a8da90271851832dbc0178121ad6593e903d05e552da04d1757982d7e4fe5b",
+    "Backend/Services/EndpointsService.cs": "14f10a3c0840a36a463b99caafd85f6bd1ef6ace4905680a27be7d0580f7fe82",
+    "Backend/Services/GraphDocument.cs": "98dd2c3de6f630ceebcbc939b0c3922ebf195cab4d7549048ab7dba80f681938",
+    "Backend/Services/ProjectQueries.cs": "31a4395971d66eaf2b31d90cdaeec33a532b150c2b52528bd97b6e08672189d8",
+    "Backend/Services/SDDGPlugin.cs": "d6c61778a204f033774967ec99d2b59d3dd7d760a9c8eb0ddfa88bccdae84fca",
+    "Backend/Services/SDDGService.cs": "7e2b42249eef5582ee17ab8e9613e9f603cb7ce538b7667dca28d6b7360709c5",
+    "Backend/Services/SessionManager.cs": "b8005e49ed515e08a6beeff05ee4cc399e56651308a2a7bdc6e4cc4469580f12",
+    "Backend/Services/Worker.cs": "3591fe241fac42c8d7e70e1661cfed3e9195ac68f8bd8b396b9c4fbc8e1425b2",
+    "Backend/ZitaDataSystem.csproj": "be3c843b9d7596f441bbbb2a5af7b2185a19a444826f6734eb56cce7d367f93b",
+    "Backend/appsettings.json": "72e3dde4c8899fcc31d825f557d12dfde82ce70ac044d6e9d13199c68f7e5ae7",
+    "TDS-Frontend-main/eslint.config.mjs": "645ef8874bc271fe418e048b52f9b014aa32080932fe9e4fabbc7dc9dc5d1ad7",
+    "TDS-Frontend-main/index.html": "b5729ad227bda65dccfe568055240a41c8b6fc98546731a7ea24c0879dcecea4",
+    "TDS-Frontend-main/package-lock.json": "eefc09bf2db435da6e777739f1b51523dbdd1288eb118710f3e5443440677754",
+    "TDS-Frontend-main/package.json": "f25b34e9c62485f4d11085293c9beb70b788ae9f10ec2f646143c443878542e3",
+    "TDS-Frontend-main/postcss.config.js": "251ecddd4672c9cf467547e3dc535de00ad2129df26e7e7ae728fa4e5ac45fc5",
+    "TDS-Frontend-main/public/manifest.json": "76eb1992882cb385ca933733bc5eb127d918568a0a9c98e22c2658102ee53379",
+    "TDS-Frontend-main/src/App.css": "4d91266ec4ce5f467ca19275f488756f03d2efba1fe25c50effeee07cfe6ac9c",
+    "TDS-Frontend-main/src/App.jsx": "1041e266ed7ef919e4d946619b8c3d26d35a87bfd3e78773491a901964818e4f",
+    "TDS-Frontend-main/src/App.test.jsx": "78e110842807178767272a65c210d7390b9158d21279c120e5fc96c146a08d87",
+    "TDS-Frontend-main/src/components/ProjectCard.jsx": "9edf898c79fc8859a0dd2890216099b6745d09b18c8932e09a5afe77fa2585b8",
+    "TDS-Frontend-main/src/components/auth/ForgotPasswordForm.jsx": "0db32fe9e995f54b4b7e0a3b2ba64100e779038e76b0b58ef5e40f0143562edc",
+    "TDS-Frontend-main/src/components/auth/LoginForm.jsx": "65eeca87f28aaf8ee0cccee725016e04c5f29ee68bd97a2046dc0558470d30da",
+    "TDS-Frontend-main/src/components/auth/SignupForm.jsx": "629472efb51f6fd0431538a36dac5aabcf7388ef45198400975d1e483e8df143",
+    "TDS-Frontend-main/src/components/common/BackButton.jsx": "7fb237031b19bae78e57035ac750a53958f1f9d70bb35e7d2f14268d2a1ff30b",
+    "TDS-Frontend-main/src/components/common/Button.js": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TDS-Frontend-main/src/components/common/Input.js": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TDS-Frontend-main/src/components/common/Layout.js": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TDS-Frontend-main/src/components/common/LoadingSpinner.js": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TDS-Frontend-main/src/components/dashboard/admin/CompanyCodeDisplay.jsx": "645ef94190f593fd14db55ab3f0489e5e084b713fa7231b17dd313dd31ea0071",
+    "TDS-Frontend-main/src/components/dashboard/admin/CreateProjectForm.jsx": "fbfc08b7d169eb799bc8d79b7deeb2df1df558402fc10feb185081472bb91eea",
+    "TDS-Frontend-main/src/components/dashboard/admin/MemberList.jsx": "d885b5739622aeea5bf8b72f426c6cd87be212ecd9dc7abe0ec0267340d642f4",
+    "TDS-Frontend-main/src/components/dashboard/admin/ProjectItem.js": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TDS-Frontend-main/src/components/dashboard/member/AssignedProjectItem.jsx": "f29553384d84d2d2d4b13598f2f0b311cce8130bb25f1cc7671c2f0e3356c959",
+    "TDS-Frontend-main/src/components/dashboard/member/Member ProjectCard.jsx": "e7f1f1b7f8a9e3a4c28d103293f9d754ee2de5f2fec1119c7bd667e4a07f4dae",
+    "TDS-Frontend-main/src/components/dashboard/member/MemberDashboard.jsx": "4169bce53ec9e15e4662f0439324f101c1ce7d864b033737584154d580f42494",
+    "TDS-Frontend-main/src/components/dashboard/shared/ChangePasswordForm.jsx": "6ffa9621ca293275f5fec9359805d801ecfea235a5c2aef67af42b07f55bf729",
+    "TDS-Frontend-main/src/components/dashboard/shared/DashboardHeader.jsx": "05cc09784f0b7201d840555c128a00bb609bf50b8dc3c3792750969c3f8099f6",
+    "TDS-Frontend-main/src/components/dashboard/shared/ProfileInfo.js": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TDS-Frontend-main/src/components/home/CallToActionSection.jsx": "d05e76ecadd977b3972a2fe6b6ffb22c1a931c7c174bfaeb5233136a556f7974",
+    "TDS-Frontend-main/src/components/home/FeaturesSection.jsx": "36b7d7848ca3d0cbebc73ab5751bd9af4689f6e238b99ce598258018187aa3c6",
+    "TDS-Frontend-main/src/components/home/HeroSection.jsx": "340ca39be3d2cbe87095604e19852933fe68252b57bd118ee0a554dac41654df",
+    "TDS-Frontend-main/src/components/home/TestimonialsSection.jsx": "7e211a0f8d75fd2bd1dec01c3a4dc2301c42420b2626c3e2f43111899c5aba5c",
+    "TDS-Frontend-main/src/components/navigation/Footer.jsx": "488a3840b4b5d34ef074b265906e0e09fb4adf8f7a571c3eedf5394ee0a87ddf",
+    "TDS-Frontend-main/src/components/navigation/Navbar.jsx": "0f3edc12fbd6ae8399223510a24d79f8f3b93053041a296b1b02bd9662ad3161",
+    "TDS-Frontend-main/src/components/navigation/Sidebar.jsx": "9f16a5c22f36e0aff3613d6582e58adeaaf33553df3835d69eb11f19b66ea17d",
+    "TDS-Frontend-main/src/components/playground/ApiNode.jsx": "b68607203fd32b443d29e43ab8460b4a874fdc4a25ce9a6289bc1aa09dc91b36",
+    "TDS-Frontend-main/src/components/playground/DraggableNodeSource.jsx": "b7e7415f9e2686856f08615b98197230df30b529429df4c2b5703ef4d810d641",
+    "TDS-Frontend-main/src/components/playground/PropertyEditor.jsx": "2adae09f31cc722add54138a41ae048830916067edf488f169215360aa541185",
+    "TDS-Frontend-main/src/components/playground/PropertyEditor.test.jsx": "411442173cffb0bf9383fe680143e8e1838d1b721599a8aed7020d6ee0e0c5b4",
+    "TDS-Frontend-main/src/components/playground/graphState.js": "680f75a7bcba7a4285456150d9c058f1e2500d7694a857c5ef7ffd99ca963a4f",
+    "TDS-Frontend-main/src/components/playground/graphState.test.js": "3f213b551cd51e87819ec81f817d41fa0522487d089dc68c272a3d110b3357bc",
+    "TDS-Frontend-main/src/config/index.js": "5233a330b4b82be41d24564d64a78acf72731dea86c242a5e3baa769fe69a3ab",
+    "TDS-Frontend-main/src/config/playgroundNodes.js": "727ffbc8e8942c55509e8f02f3c9d17218d62923d9082c7b4f656a9247e4bfdb",
+    "TDS-Frontend-main/src/contexts/AuthContext.jsx": "72c5a84b02cd982f8b950cce702db378c063d08bed819f19217d16118e93ea8d",
+    "TDS-Frontend-main/src/hooks/useAuth.js": "26a91faec97632ac72c174aff3c2e911d54f965c381134b2450f82e243858bca",
+    "TDS-Frontend-main/src/hooks/useProjectGraph.js": "525d891a22688bcb027f784ee8331c17b4f11595732597047d6db220c03f54c5",
+    "TDS-Frontend-main/src/index.css": "9b1731b31505ef7a49ba62fbebc2d61cc5141529cd438408bb6d1397a41e7d19",
+    "TDS-Frontend-main/src/index.jsx": "6207a63120b3883f2c2fd9ffaf0f2b75c69425b7bfc61f483e71755dbc62894a",
+    "TDS-Frontend-main/src/logo.svg": "db2940ef42db6ab44544bc1b3413f92309f3fb67a74c7ee4225e9fd8ba7c02af",
+    "TDS-Frontend-main/src/pages/AdminDashboardPage.jsx": "d6bc0850fa4e98e260434ebd05e6b65dc7c5eaf7f5c3f58fa069a5078b2495e5",
+    "TDS-Frontend-main/src/pages/ComingSoonPage.jsx": "49ccc33ec9e26a8ad1e0cb7c94b9abd813e1b0a56f456b1cb5273e28b5185980",
+    "TDS-Frontend-main/src/pages/DocumentationPage.jsx": "7493171c9df9331ba7c8b53d7fa59a47a33646a5164c7660b4d9015c77fa8794",
+    "TDS-Frontend-main/src/pages/ForgotPasswordPage.jsx": "f8ddaca670caab4ce17877edb521f9c1a051d4a7099a68a63421cdfda89776c7",
+    "TDS-Frontend-main/src/pages/HomePage.jsx": "d76e183f8381d16f181df1a071d166933471b75c581420501b891161b9151a91",
+    "TDS-Frontend-main/src/pages/LoginPage.jsx": "b151c313850aae8177b2b13511626d26f1ab9b952160fbb54eee5ead21d623b9",
+    "TDS-Frontend-main/src/pages/MemberDashboardPage.jsx": "216b68da75ace9a3ca7de32b5f31695cd143b712357dd54c67c6f113b4e60e49",
+    "TDS-Frontend-main/src/pages/PresentationNavigation.test.jsx": "ade109dbd8eda1288cbbf0c23ffaa0eb68109d79d6e29da10a7ca653fc1a78d0",
+    "TDS-Frontend-main/src/pages/ProfilePage.jsx": "eae2799ff9e09aaf79f7a176eb48dfcefc3ca28888250743f449e02c9d41b713",
+    "TDS-Frontend-main/src/pages/ProjectPlaygroundPageV2.jsx": "24a46f0f6f2dbacd2f07763d60ef2a38bc07c84b170bbe7c071f29e43ab7766d",
+    "TDS-Frontend-main/src/pages/ProjectPlaygroundPageV2.test.jsx": "7ab7eedf1e0e8eee7c6388dbe90ada7e355f4ab75a2a4b8b2655c6f51d12bd0a",
+    "TDS-Frontend-main/src/pages/SignupPage.jsx": "5deda8c858a8c57ef47ef83b799904793356d091dd645bef63db35a9297872ac",
+    "TDS-Frontend-main/src/pages/TermsAndConditionsPage.jsx": "dc7b0473a68077f5913a8967e8a6d69b9aeb938eb5b4c85e865757e7fc2dda14",
+    "TDS-Frontend-main/src/reportWebVitals.js": "714851669856152806c289f9aac6240b414bbac50c60ee4f7e6247f31eac0c1c",
+    "TDS-Frontend-main/src/routes/AppRoutes.jsx": "81b8e36b97c7a227fabbbfe0f85d4607b7fce8e3b12c46022b23e466b7b7066d",
+    "TDS-Frontend-main/src/routes/AppRoutes.load-failure.test.jsx": "51192e810ffff8f89bcc992dd8d5e0c7e6e6b10473285ebc42950af68a00440c",
+    "TDS-Frontend-main/src/routes/AppRoutes.test.jsx": "20d1ed8ea98a1ae0e7f5ebc5ac4be65e25ed8d042aaedde40738050306ce3979",
+    "TDS-Frontend-main/src/services/api.js": "3d8223a6dd23a0b71fdbef868c25ecb61244158700236974da8578f455fcdfea",
+    "TDS-Frontend-main/src/services/api.test.js": "00c38e0b5681921a6e0a2f36fff9f0e935eaa659e2612f30be996cb2c9463479",
+    "TDS-Frontend-main/src/services/auth.js": "ec42030606279accd84069470e633e12dcbb3c31ab36c787f13fa4275c610566",
+    "TDS-Frontend-main/src/services/graphs.js": "0bae0a928d8b327d6e53439595581755a02d8302a72f6648f434c9aaf88c72f1",
+    "TDS-Frontend-main/src/services/graphs.test.js": "47bf7039a0e111a5a4eb10c89f7ff4c3336feeb6da1c5563d98777bca923279d",
+    "TDS-Frontend-main/src/services/organizations.js": "471b3e85d5fa4869ff99e005298e5743478d9e9afbc0a5e09b1dd61b2939fcae",
+    "TDS-Frontend-main/src/services/projects.js": "add2860794ef09b33bb4c08b6d7d4d850f9ef15bb540cc8f4f91715c78e6ed7a",
+    "TDS-Frontend-main/src/setupTests.js": "66ea48c7b0553ee38f64eec7472095fdc552fc8a6ede593530c00c78ba77d1f8",
+    "TDS-Frontend-main/src/styles/global.css": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TDS-Frontend-main/src/styles/theme.js": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TDS-Frontend-main/src/utils/helpers.js": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "TDS-Frontend-main/tailwind.config.js": "69e6d75a0e91046c26dd2555703a026c3f4d63fc0be306731f9d9f1531f47bec",
+    "TDS-Frontend-main/vite.config.mjs": "37d6d0554d85b5b08e6013f39373d85a586fd883654d79ec908f4a2a3ff3725f",
+    "TDS-Frontend-main/vitest.config.mjs": "5213e6cc4f7660a59645e952bd910fc71b7d99958cf5e041a9f6940418c31b48",
+    "compose.tests.yaml": "d9a1d309c9d9d70387adbfbda6574f5c789a322704cef8a735174df618708781",
+    "compose.yaml": "1894972a1b4de9dcd11a3f386fa41c64e76b0564f6f451d767b02d344314939e",
+    "database/init/001-local-schema.sql": "3aee170bb4510ef93888cb63535fa7977d44b23e3220b68b772a6dbe122c4ff8",
+    "database/init/002-auth-invitations.sql": "ccf20c7e5cb47372bf6fb43f468ce6944cc1da352e2e39ea1318b7d6c1b79e4a",
+    "database/init/003-project-graphs.sql": "6859053b4e97e02949cf0d9ada4c718cd4dcfff312306f6fa05ff71081015809",
+    "database/tests/004-test-identity.sql": "9c2de4eda86a9862b9164654d9ab0834c80b9547e502ef4269db9bc9b0f8f563",
+    "database/tests/verify.sql": "3b445521295d5f553b1d1a4f5364e0f6a6801decb3201178c9b3ae2e81c06957",
+    "global.json": "6a9d5e059d71e51ec61f582ea1cda96d2254bf83f7857846e40f0466e6dd9417",
+    "scripts/Initialize-LocalEnvironment.ps1": "48386278c9126e8ba3a6ceb8ffe124a740b710be1dcdcb594490453ec6a5e866",
+    "scripts/LocalDevelopment.ps1": "cd74da1ad838fce57c0c460c0475bb182e13aa748094bd10e032f4ad5c89f713",
+    "scripts/Remove-IsolatedTestResources.ps1": "37f39753c95608116f6e74c841086437a36411a60b9b28644da8ef10329e0572",
+    "scripts/Start-LocalApi.ps1": "b9c282709c26d0d71cb9cc7838a97b965621ea0ef4cde835413f9253d83bbc55",
+    "scripts/Start-LocalDatabase.ps1": "66cf83d8b606e4adba36679f43d61d17618498be4df3f287e5278b05ccccde7b",
+    "scripts/Start-LocalFrontend.ps1": "546402d27a9ec5cec581cbef1a5b4633d73bfbb5bb08fc838106df2630d2ce85",
+    "scripts/Test-Backend.ps1": "26ec7503a5f0878977529fda35b340f1b8b012ad574e59371b326fbd1cff9045",
+    "scripts/Test-Dependencies.ps1": "d172bb0a5080128ac7f49d52afcdf52e28b0af738e8be6040b30f3004219f533",
+    "scripts/Test-Frontend.ps1": "3d3edf4ba061fd663869111f06d2c94c8c58f749dcb1e7da01ec505d6115d9e5",
+    "scripts/Test-IsolatedDatabase.ps1": "894e7ea1327eeb35860d7a2f31cf8351e74e2ec312b6d840387cda8cd85f8168",
+    "scripts/Test-LocalBrowser.ps1": "816341dd4c7516dd91bc172d603f5675d7049e8a3375493c02066bc94a85b747",
+    "scripts/TestSupport.ps1": "abc5c2e62e6cfa41c9d5ae80b06e03c0ab766c12002aeccd7205918581747ab4",
+    "scripts/Update-LocalAuthenticationSchema.ps1": "f8201bc1a2962b0784845844298eb17aa33a8b35b799bb7c0bbb67a6c63a2ad0",
+    "scripts/Update-LocalGraphSchema.ps1": "ca65964d2394058e5c067e457554055e2050c2e1046c8b2674ab87a2336aba5f",
+    "scripts/npm-audit-policy.cjs": "36a2477bd44cea7a588158d0b6e5de3612dbf23716799647f966a5cd6f9d332c",
+    "scripts/npm-audit-policy.test.cjs": "8400ce805617a4c2f5d7f55fc66937f68f5f7a9a351392dbe3b3c952503f8852",
+    "scripts/validate-ci.cjs": "e433383641a569e1c301bba1257316ec28ee08ae4fd6c599756e218550bed65d",
+    "tests/BoilerRoom.Tests/AuthenticationTests.cs": "b820e6f6a55c7b6051b5fabcf630718051dda91698fb43cb891e70505d106252",
+    "tests/BoilerRoom.Tests/BoilerRoom.Tests.csproj": "af2f8b9dd49bf654271ce60181b1e4964375c0cfcbb523b8bece1dc53476b06d",
+    "tests/BoilerRoom.Tests/DatabaseTests.cs": "9965001e175550e469aa9e072c66868ce2fbb2cec1a9a1c8920e96cc568a5510",
+    "tests/BoilerRoom.Tests/GraphValidationTests.cs": "9de1db9564f77be49f92654b05b803b2b5c3b0b2ce21b562820872e23f207e58",
+    "tests/BoilerRoom.Tests/LegacyContractTests.cs": "4a04eec2d820fe7286a0f3b46ac8ccc89448a299aaf30e309837a04c3eca6fe6",
+    "tests/BoilerRoom.Tests/packages.lock.json": "850a9f1d0d251687016ab7a2065b88f05955afac6e7351210e70962623f886fa",
+    "tools/BrowserWorkflowFixture/BrowserWorkflowFixture.csproj": "7c194e586a9dc968f39cd101dd8d8483fae6ff709432ad6ed33a255391b7ad58",
+    "tools/BrowserWorkflowFixture/Program.cs": "97c918c3257df4f01b382fc01a34eb6b90659c18dacc53b41c7301e5ffe2a3ec",
+    "tools/GraphIntegrationProbe/GraphIntegrationProbe.csproj": "6e1ce603b03a267c47eaf489a867f6fdaaeac72c16dbc8bad4af6a7277eae8a1",
+    "tools/GraphIntegrationProbe/GraphProbeRecovery.cs": "c2f258f978a07d4f1ca1d9bdb63ddcf18dae41235aa1f246e51e2409cc7cfd09",
+    "tools/GraphIntegrationProbe/ProbeReport.cs": "73a842a10da236ef93648c17c63678ff0b65eb30a0134a90cf53e2df1b24ca90",
+    "tools/GraphIntegrationProbe/Program.cs": "8456679ad1bbc3d7a2b8714bcc5e20bc05b00c9d961d936a68301cbb30923f98",
+    "tools/LocalAdministrator/LocalAdministrator.csproj": "c93859043fe292a1f55228a8e8e395239faf3a840011ed3a39c932995a408c38",
+    "tools/LocalAdministrator/Program.cs": "3ba63c79c1c3d44f6f11f51a086047ee0295f0389f54709908cd881cf4dbafa4",
+    "tools/SecurityRegressionProbe/ApiClient.cs": "ab03568c851593989fddd5cb17ee70e8c53e3e65b71f6f2e1ba0175c6bfe42ef",
+    "tools/SecurityRegressionProbe/ProbeReport.cs": "cabf08c2670d8e859ddd286007941ab9078a08f354ca472e91429ebcdbe140a1",
+    "tools/SecurityRegressionProbe/Program.cs": "2217c3457867e2496bb7d05836eaf225584703f127ea946228f71c36bf01afa2",
+    "tools/SecurityRegressionProbe/SecurityRegressionProbe.csproj": "c93859043fe292a1f55228a8e8e395239faf3a840011ed3a39c932995a408c38",
+    "tools/Shared/LocalDatabase.cs": "7c3f13cb5efad89260b15124b988f66f9d7c00a27070ba4f6e4c8ac54f080708",
+    "tools/browser-workflows.cjs": "7dd7791b29ac6e72d2aeefff4ed8a582a8a7713287554e242c004407f12ae0d2",
+    "tools/editor-browser-checks.cjs": "5455a1b4308e370b6c76e9680049f092fe9db651e06e98122ff000754ee5575a",
+    "tools/graph-browser-checks.cjs": "f97ca7c8e7ff426fb9441dd859017e74180dcf4b6ad490f0ca0814311a18439a"
+  },
+  "historicalExcludedPaths": [
+    "TDS-Frontend-main/db.example.json",
+    "TDS-Frontend-main/legacy/cra-index.html",
+    "TDS-Frontend-main/src/components/dashboard/admin/AdminDashboard.js",
+    "TDS-Frontend-main/src/components/playground/DraggableItem.jsx",
+    "TDS-Frontend-main/src/components/playground/SortableItem.jsx",
+    "TDS-Frontend-main/src/components/playground/SqlTableNode.jsx",
+    "database/tests/http-probe-check.sql",
+    "database/tests/http-probe-cleanup.sql",
+    "database/tests/persistence-probe.sql",
+    "scripts/Test-LocalDatabase.ps1",
+    "tools/HttpIntegrationProbe/HttpIntegrationProbe.csproj",
+    "tools/HttpIntegrationProbe/Program.cs"
+  ]
+}

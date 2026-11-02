@@ -1,0 +1,37 @@
+# Individual 2026 test infrastructure. Never merge with compose.yaml.
+name: boilerroom-tds-m6a-tests
+services:
+  postgres:
+    image: postgres:16.15@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54
+    container_name: ${TDS_TEST_CONTAINER:?Use scripts/Test-IsolatedDatabase.ps1}
+    restart: "no"
+    environment:
+      POSTGRES_DB: tds_m6a_test
+      POSTGRES_USER: bootstrap_m6a
+      # Public synthetic credentials, used ONLY in this disposable loopback test DB.
+      POSTGRES_PASSWORD: "1111111111111111111111111111111111111111111111111111111111111111"
+      TDS_APP_DB_USER: app_m6a
+      TDS_APP_DB_PASSWORD: "2222222222222222222222222222222222222222222222222222222222222222"
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+    ports:
+      - "127.0.0.1:55433:5432"
+    volumes:
+      - testdata:/var/lib/postgresql/data
+      - ./database/init/001-local-schema.sql:/docker-entrypoint-initdb.d/001-local-schema.sql:ro
+      - ./database/init/002-auth-invitations.sql:/docker-entrypoint-initdb.d/002-auth-invitations.sql:ro
+      - ./database/init/003-project-graphs.sql:/docker-entrypoint-initdb.d/003-project-graphs.sql:ro
+      - ./database/tests/004-test-identity.sql:/docker-entrypoint-initdb.d/004-test-identity.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U bootstrap_m6a -d tds_m6a_test"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    labels:
+      io.boilerroom-tds.scope: isolated-synthetic-tests
+      io.boilerroom-tds.test-run: ${TDS_TEST_RUN:?Use the test runner}
+volumes:
+  testdata:
+    name: ${TDS_TEST_VOLUME:?Use the test runner}
+    labels:
+      io.boilerroom-tds.scope: isolated-synthetic-tests
+      io.boilerroom-tds.test-run: ${TDS_TEST_RUN:?Use the test runner}

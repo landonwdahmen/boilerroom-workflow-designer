@@ -1,0 +1,6 @@
+# Canonical text bytes keep release manifests and the Git index reproducible.
+* text=auto eol=lf
+*.png binary
+*.ico binary
+# Preserve the exact verified upstream license bytes, including line endings.
+third-party-notices/** -text
