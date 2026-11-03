@@ -41,10 +41,12 @@ Other backend pins have verified installed nuspec expressions: Npgsql 9.0.3 decl
 
 | Current file | SHA-256 |
 | --- | --- |
-| TDS-Frontend-main/src/logo.svg | `f7602c748a37cb5688a778257fca353d46e942f061d83c4b5082c5a50352c572` |
+| TDS-Frontend-main/src/logo.svg | `db2940ef42db6ab44544bc1b3413f92309f3fb67a74c7ee4225e9fd8ba7c02af` |
 | TDS-Frontend-main/public/logo192.png | `58968a39ef6ed4b2e9f35c47ac7c1cb1574d52f0962da4b1d26c4b26c0e3001a` |
 | TDS-Frontend-main/public/logo512.png | `efcfe60983327ea47a79b76ccff83765499fabab63b373a87b15df6a421609df` |
 | TDS-Frontend-main/public/favicon.ico | `4719a5c1a2ca80cc65cdcf9ecc55c30fa3d33f4f286d87590e837afb97910a62` |
+
+The committed SVG uses LF line endings. Its original workspace CRLF bytes have SHA-256 `f7602c748a37cb5688a778257fca353d46e942f061d83c4b5082c5a50352c572`; normalizing that line ending produces the committed checksum above with identical SVG text. This records byte normalization, not regenerated artwork or a licensing change. The PNG and ICO bytes are unchanged.
 
 Historical CRA assets, original metadata, terms and other pre-change files are preserved under ignored `.local/m7b3/before` with a SHA-256 baseline; earlier upstream identity evidence is retained privately. They are not part of a proposed public export. This provenance statement does not select a first-party license or assert exclusive ownership of the original team project. Existing portfolio screenshots retain their dated actual-application provenance; no screenshot was reconstructed or changed for branding.
 
