@@ -6,6 +6,7 @@ param(
 . (Join-Path $PSScriptRoot 'TestSupport.ps1')
 if ($Suite -ne 'Database' -and -not $IsWindows) { throw 'Existing HTTP/Edge probes require Windows process/socket identity checks. Use Database on Linux CI.' }
 if ($Suite -eq 'Browser' -and (-not $PlaywrightModule -or -not (Test-Path -LiteralPath $PlaywrightModule))) { throw 'Supply an existing Playwright module; no automatic installation.' }
+if ($Suite -ne 'Database') { . (Join-Path $PSScriptRoot 'WindowsListenerGuard.ps1') }
 $run = [Guid]::NewGuid().ToString('N')
 $containerName = "boilerroom-tds-m6a-$run"
 $volumeName = "boilerroom-tds-m6a-$run-data"
@@ -80,18 +81,9 @@ function Stop-OwnedProcess($Child) {
     if ($Child -and -not $Child.Process.HasExited) { $Child.Process.Kill($true); $null=$Child.Process.WaitForExit(10000) }
 }
 function Assert-Listener($Child, [int]$Port, [string]$ExpectedPath, [string]$ExpectedName) {
-    $deadline=[DateTime]::UtcNow.AddSeconds(40)
-    do {
-        if ($Child.Process.HasExited) { throw 'Test-owned application exited; private startup details withheld.' }
-        $listeners=@(Get-NetTCPConnection -State Listen -LocalPort $Port -ErrorAction SilentlyContinue)
-        if ($listeners.Count) { break }
-        Start-Sleep -Milliseconds 300
-    } while ([DateTime]::UtcNow -lt $deadline)
-    $owned=@($listeners | Where-Object { $_.OwningProcess -eq $Child.Process.Id })
-    $identity=Get-CimInstance Win32_Process -Filter "ProcessId = $($Child.Process.Id)"
-    if ($owned.Count -eq 0 -or @($listeners | Where-Object { $_.OwningProcess -ne $Child.Process.Id -or $_.LocalAddress -notin @('127.0.0.1','::1') }).Count -gt 0 -or
-        $identity.Name -ne $ExpectedName -or -not $identity.CommandLine.Contains($ExpectedPath)) { throw 'Independent workspace/PID/loopback listener identity check failed.' }
+    Assert-OwnedWindowsHttpsEndpoint $Child $Port $ExpectedPath $ExpectedName $runDirectory
 }
+
 function Start-TestApi([int]$Minutes) {
     Assert-Owned
     $healthDeadline=[DateTime]::UtcNow.AddSeconds(35)
@@ -119,7 +111,7 @@ try {
     $probe=[Net.Sockets.TcpListener]::new([Net.IPAddress]::Loopback,55433)
     try { $probe.Start() } finally { $probe.Stop() }
     if ($Suite -ne 'Database') {
-        foreach ($port in @(8836,3000)) { if (@(Get-NetTCPConnection -State Listen -LocalPort $port -ErrorAction SilentlyContinue).Count) { throw 'Stop your own application listeners before isolated HTTP tests.' } }
+        Assert-WindowsPortsAvailable @(8836,3000)
     }
     $null=Docker ($composeArguments+@('config','--quiet'))
     $null=Docker ($composeArguments+@('up','-d','--no-deps','--pull','never','--wait','--wait-timeout','90','postgres')) 115
